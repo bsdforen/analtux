@@ -248,6 +248,7 @@ class MySQL:
 
         @param key: Key to retrive info strings for
         """
+        self.con.ping(reconnect=True)
         cur = self.con.cursor()
         cur.execute("SELECT * FROM factoids WHERE factoid_key = '{}';".format(key))
         ret = cur.fetchall()
@@ -284,6 +285,7 @@ class MySQL:
 
     def getrandominfo(self):
         """ Returns a random info string. """
+        self.con.ping(reconnect=True)
         cur = self.con.cursor()
         cur.execute('SELECT * FROM factoids ORDER BY RAND() LIMIT 1;')
         ret = cur.fetchone()
@@ -305,6 +307,7 @@ class MySQL:
         @param key: Key were the info string is located
         @param text: Text to forget
         """
+        self.con.ping(reconnect=True)
         cur = self.con.cursor()
         cur.execute("DELETE FROM factoids WHERE factoid_key = '{}' AND factoid_value = '{}';"
                 .format(key, text))
@@ -318,6 +321,7 @@ class MySQL:
 
         @param key: key to remove
         """
+        self.con.ping(reconnect=True)
         cur = self.con.cursor()
         cur.execute("DELETE FROM factoids WHERE factoid_key = '{}';".format(key))
         cur.close()
@@ -333,6 +337,7 @@ class MySQL:
         @param key: Key to learn
         @param text: Text to learn
         """
+        self.con.ping(reconnect=True)
         cur = self.con.cursor()
         cur.execute("INSERT INTO factoids (factoid_key, factoid_value, factoid_author, factoid_channel, " +
                 "factoid_timestamp, factoid_locked) VALUES  ('{}', '{}', '{}', '{}', NOW(), '0');"
