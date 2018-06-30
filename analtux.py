@@ -396,7 +396,7 @@ def main():
     # ----
 
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description="A.N.A.L.T.U.X IRC Bot")
+    parser = argparse.ArgumentParser(description="A.N.A.L.T.U.X. IRC Bot")
     parser.add_argument('-c', dest='cfg', type=str, required=True, help="Config file")
     parser.add_argument('-l', dest='log', type=str, required=True, help="Log directory")
 
