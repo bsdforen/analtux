@@ -125,9 +125,10 @@ class Analtux(irc.bot.SingleServerIRCBot):
         """
         chan = val.target
         msg = val.arguments[0].strip().split(' ', 1)
+        action = msg[0].lower()
         user = val.source.split('!', 1)[0]
 
-        if msg[0] == "!info":
+        if action == "!info":
             if len(msg) == 1:
                 # The user send us just '!info', so we're
                 # answering with a random info string.
@@ -144,7 +145,7 @@ class Analtux(irc.bot.SingleServerIRCBot):
                 for info in mysql.getinfo(key):
                     con.privmsg(chan, info)
                     time.sleep(0.25)
-        elif msg[0] == "!learn":
+        elif action == "!learn":
             # Check for syntax correctness
             error = False
 
@@ -172,7 +173,7 @@ class Analtux(irc.bot.SingleServerIRCBot):
 
                 mysql.learn(chan, user, key, text)
                 con.privmsg(chan, "Okay, learned {} = {}".format(key, text))
-        elif msg[0] == "!forget":
+        elif action == "!forget":
             # Check for syntax correctness
             error = False
             fullinfo = False
