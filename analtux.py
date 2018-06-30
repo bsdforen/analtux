@@ -214,6 +214,10 @@ class Analtux(irc.bot.SingleServerIRCBot):
                     logger.info("{} wants to forget {} = {}".format(user, key, text))
                     mysql.forget(key, text)
                     con.privmsg(chan, "forgot {} = {}".format(key, text))
+        elif action == "!version":
+            logger.info(user + " Requested the version string")
+            con.privmsg(chan, "A.N.A.L.T.U.X. (Artificial Networked Android Limited Troubleshooting " +
+                    "and Ultimate Xenocide) Version 6, © 2018 BSDForen.de: https://github.com/Yamagi/analtux" )
 
 
 class MySQL:
