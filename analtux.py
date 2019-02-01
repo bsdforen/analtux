@@ -255,7 +255,8 @@ class MySQL:
         """
         self.con.ping(reconnect=True)
         cur = self.con.cursor()
-        cur.execute("SELECT * FROM factoids WHERE factoid_key = '{}';".format(key))
+        esc_key = self.con.escape_string(key)
+        cur.execute("SELECT * FROM factoids WHERE factoid_key = '{}';".format(esc_key))
         ret = cur.fetchall()
         cur.close()
 
@@ -314,8 +315,10 @@ class MySQL:
         """
         self.con.ping(reconnect=True)
         cur = self.con.cursor()
+        esc_key = self.con.escape_string(key)
+        esc_text = self.con.escape_string(text)
         cur.execute("DELETE FROM factoids WHERE factoid_key = '{}' AND factoid_value = '{}';"
-                .format(key, text))
+                .format(esc_key, esc_text))
         cur.close()
         self.con.commit()
 
@@ -328,7 +331,8 @@ class MySQL:
         """
         self.con.ping(reconnect=True)
         cur = self.con.cursor()
-        cur.execute("DELETE FROM factoids WHERE factoid_key = '{}';".format(key))
+        esc_key = self.con.escape_string(key)
+        cur.execute("DELETE FROM factoids WHERE factoid_key = '{}';".format(esc_key))
         cur.close()
         self.con.commit()
 
@@ -344,9 +348,13 @@ class MySQL:
         """
         self.con.ping(reconnect=True)
         cur = self.con.cursor()
+        esc_chan = self.con.escape_string(chan)
+        esc_user = self.con.escape_string(user)
+        esc_key = self.con.escape_string(key)
+        esc_text = self.con.escape_string(text)
         cur.execute("INSERT INTO factoids (factoid_key, factoid_value, factoid_author, factoid_channel, " +
                 "factoid_timestamp, factoid_locked) VALUES  ('{}', '{}', '{}', '{}', NOW(), '0');"
-                .format(key, text, user, chan))
+                .format(esc_key, esc_text, esc_user, esc_chan))
         cur.close()
         self.con.commit()
 
