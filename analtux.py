@@ -217,7 +217,7 @@ class Analtux(irc.bot.SingleServerIRCBot):
         elif action == "!version":
             logger.info(user + " Requested the version string")
             con.privmsg(chan, "A.N.A.L.T.U.X. (Artificial Networked Android Limited Troubleshooting " +
-                    "and Ultimate Xenocide) Version 6, © 2018 - 2021 BSDForen.de: https://github.com/Yamagi/analtux" )
+                    "and Ultimate Xenocide) Version 6, © 2018 - 2021 BSDForen.de: https://github.com/bsdforen/analtux" )
         elif action == "!ping":
             logger.info(user + " Requested a ping")
             con.privmsg(chan, "pong!")
