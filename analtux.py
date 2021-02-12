@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (c) 2018 - 2019 BSDForen.de
+# Copyright (c) 2018 - 2021 BSDForen.de
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -217,7 +217,10 @@ class Analtux(irc.bot.SingleServerIRCBot):
         elif action == "!version":
             logger.info(user + " Requested the version string")
             con.privmsg(chan, "A.N.A.L.T.U.X. (Artificial Networked Android Limited Troubleshooting " +
-                    "and Ultimate Xenocide) Version 6, © 2018 - 2019 BSDForen.de: https://github.com/Yamagi/analtux" )
+                    "and Ultimate Xenocide) Version 6, © 2018 - 2021 BSDForen.de: https://github.com/Yamagi/analtux" )
+        elif action == "!ping":
+            logger.info(user + " Requested a ping")
+            con.privmsg(chan, "pong!")
 
 
 class MySQL:
