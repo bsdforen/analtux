@@ -22,7 +22,7 @@ python3 -m venv /path/to/venv
 Install the the Package Requirements from `requirements.txt`:
 
 ```bash
-LDFLAGS=/usr/local/lib/path/to/venv/bin/pip install -r requirements.txt
+LDFLAGS=/usr/local/lib/path/to/venv/bin/pip install --upgrade pip wheel -r requirements.txt
 ```
 
 Now you ready to run the bot: 
