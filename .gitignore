@@ -1,0 +1,10 @@
+env
+_branch
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+*.swp
+*.swx
+*.vimtags
